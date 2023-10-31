@@ -18,7 +18,7 @@
 
 Важно:
 для запуска лучше использовать https://colab.research.google.com/?hl=ru  т.к. на локальной машине использует много
-ресресурсов для установки библиотек и т.п.
+ресурсов для установки библиотек и т.п.
 
 Если возникает ошибка:
 ValueError: Couldn't instantiate the backend tokenizer from one of:
