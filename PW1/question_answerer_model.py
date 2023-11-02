@@ -18,8 +18,9 @@ if __name__ == "__main__":
 
     preds = question_answerer(question, context)
 
-    print(f"\nquestion: {question}\n\
-    answer: {preds['answer']}\n\
-    score:\t{round(preds['score'], 4)},\n\
-    start:\t{preds['start']},\n\
-    end:\t{preds['end']}")
+    print()
+    print("question:", question)
+    print("answer:", preds['answer'])
+    print("score:\t", round(preds['score'], 4))
+    print("start:\t", preds['start'])
+    print("end:\t", preds['end'])
