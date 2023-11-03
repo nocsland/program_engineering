@@ -17,8 +17,8 @@
 гитхаба https://github.com/nocsland/program_engineering/blob/master/PW1/summary_text_model/summary_text.ipynb
 
 Важно:
-для запуска лучше использовать https://colab.research.google.com/?hl=ru  т.к. на локальной машине использует много
-ресурсов для установки библиотек и т.п.
+для запуска рекомендуется использовать google colab https://colab.research.google.com/?hl=ru  т.к. на локальной машине
+использует много ресурсов для установки библиотек и т.п.
 
 Если возникает ошибка:
 ValueError: Couldn't instantiate the backend tokenizer from one of:
@@ -32,3 +32,5 @@ You need to have sentencepiece installed to convert a slow tokenizer to a fast o
 1. Деинсталлировать стандартный модуль transformers командой pip uninstall transformers
 2. Установить модуль другой модуль !pip install --no-cache-dir transformers sentencepiece
 3. Использовать Use_fast=False в конструкции tokenizer = AutoTokenizer.from_pretrained(“XXXXX”, use_fast=False)
+
+Пункты 2-3 добавлены в файл ноутбука summary_text.ipynb.
