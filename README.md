@@ -11,5 +11,5 @@
 
 ### Власов А. А.
 #### Summary text model
-- [Файл модели](/PW1/summary_text_model/summary_text.py)
-- [Описание модели](/PW1/summary_text_model/readme_summary_text.md)
+- [Файл модели](PW1/summary_text_model/summary_text.py)
+- [Описание модели](PW1/summary_text_model/readme_summary_text.md)

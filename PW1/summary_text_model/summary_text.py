@@ -30,4 +30,4 @@ summary = tokenizer.decode(
     clean_up_tokenization_spaces=False
 )
 
-print(summary)
+print("Краткое содержание введенного текста:", summary)
