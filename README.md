@@ -13,3 +13,8 @@
 #### Summary text model
 - [Файл модели](/PW1/summary_text_model/summary_text.py)
 - [Описание модели](/PW1/summary_text_model/readme_summary_text.md)
+
+### Дубовик А. А.
+#### Text to image model
+- [Файл проекта](/PW1/text_2_image_model/text_2_image.py)
+- [Описание модели](/PW1/text_2_image_model/README.md)
