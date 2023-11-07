@@ -1,10 +1,8 @@
 """
-
 Постановка задачи описана тут: text_2_image_model/README.md
 
 Необходимые зависимости: transformers, sentencepiece, diffusers
 Установка: pip install transformers sentencepiece diffusers
-
 """
 
 from abc import ABC, abstractmethod
