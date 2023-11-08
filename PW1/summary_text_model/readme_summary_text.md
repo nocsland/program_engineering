@@ -21,8 +21,8 @@ https://colab.research.google.com/github/nocsland/program_engineering/blob/maste
 гитхаба https://github.com/nocsland/program_engineering/blob/master/PW1/summary_text_model/summary_text.ipynb
 
 Важно:
-для запуска рекомендуется использовать google colab https://colab.research.google.com/?hl=ru  т.к. на локальной машине
-использует много ресурсов для установки библиотек и т.п.
+Для запуска рекомендуется использовать google colab https://colab.research.google.com/?hl=ru  т.к. на локальной машине
+модель использует много ресурсов для установки библиотек и т.п.
 
 Если возникает ошибка:
 ValueError: Couldn't instantiate the backend tokenizer from one of:
