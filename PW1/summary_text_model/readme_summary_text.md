@@ -9,9 +9,13 @@
 2. Войти в аккаунт google
 3. "Файл" -> Открыть блокнот
 4. Выбрать репозиторий https://github.com/nocsland/program_engineering
-5. Загрузить файл ноутбука из каталога PW1
+5. Загрузить файл ноутбука summary_text.ipynb из каталога PW1
 6. При первом запуске запустить последовательно обе ячейки
 7. При втором и последующем использовании достаточно запускать только ячейку с моделью
+8. После запуска модели в поле "Введите текст" необходимо ввести исходный текст и нажать "Enter"
+9. После обработки введенного текста будет выведена надпись "Краткое содержание введенного текста:" и резюме текста
+   Пример работы модели можно увидеть по ссылке: 
+https://colab.research.google.com/github/nocsland/program_engineering/blob/master/PW1/summary_text_model/summary_text.ipynb?hl=ru#scrollTo=9wQyDdAQ-3GV
 
 Загрузить готовый jupyter notebook с подключенной моделью можно из
 гитхаба https://github.com/nocsland/program_engineering/blob/master/PW1/summary_text_model/summary_text.ipynb
