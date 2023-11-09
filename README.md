@@ -18,3 +18,8 @@
 #### Text to image model
 - [Файл проекта](/PW1/text_2_image_model/text_2_image.py)
 - [Описание модели](/PW1/text_2_image_model/README.md)
+
+### Тимофеев Е. Н.
+#### Dialog bot
+- [Файл модели](/PW1/dialog_chat/ml_homework_chat.py)
+- [Описание модели](/PW1/dialog_chat/README.md)
