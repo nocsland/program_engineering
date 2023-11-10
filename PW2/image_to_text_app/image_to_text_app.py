@@ -53,7 +53,10 @@ def main():
         if res:
             inputs = processor(img, return_tensors="pt")
             
+            # генерируем описание
             out = model.generate(**inputs)
+            
+            # выводим результат
             st.write('*Результат (eng):*  :green[{}]'.format(processor.decode(out[0], skip_special_tokens=True).capitalize()))
 
 if __name__ == "__main__":
