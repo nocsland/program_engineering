@@ -6,7 +6,7 @@ WHITESPACE_HANDLER = lambda k: re.sub('\s+', ' ', re.sub('\n+', ' ', k.strip()))
 article_text = input("Введите текст ")
 
 model_name = "csebuetnlp/mT5_multilingual_XLSum"
-tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False, legacy=False)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
 input_ids = tokenizer(
