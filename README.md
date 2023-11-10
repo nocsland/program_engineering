@@ -10,9 +10,17 @@
 - [Описание модели](/PW1/question_answerer_model/readme_question_answerer.md)
 
 ### Власов А. А.
+#### `PW1`
+
 #### Summary text model
 - [Файл модели](/PW1/summary_text_model/summary_text.py)
 - [Описание модели](/PW1/summary_text_model/readme_summary_text.md)
+
+#### `PW2`
+
+#### Генерация краткого содержания введенного текста
+- [Приложение](/PW2/summary_text_app/summary_text_app.py)
+- [Описание приложения](/PW2/summary_text_app/README.md)
 
 ### Дубовик А. А. 
 #### `PW1`
