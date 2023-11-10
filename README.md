@@ -14,7 +14,20 @@
 - [Файл модели](/PW1/summary_text_model/summary_text.py)
 - [Описание модели](/PW1/summary_text_model/readme_summary_text.md)
 
-### Дубовик А. А.
+### Дубовик А. А. 
+#### `PW1`
+
 #### Text to image model
 - [Файл проекта](/PW1/text_2_image_model/text_2_image.py)
 - [Описание модели](/PW1/text_2_image_model/README.md)
+
+#### `PW2`
+
+#### Генерация описания по изображению (image to text model)
+- [Приложение](/PW2/image_to_text_app/image_to_text_app.py)
+- [Описание приложения](/PW2/image_to_text_app/README.md)
+
+### Тимофеев Е. Н.
+#### Dialog bot
+- [Файл модели](/PW1/dialog_chat/ml_homework_chat.py)
+- [Описание модели](/PW1/dialog_chat/README.md)
