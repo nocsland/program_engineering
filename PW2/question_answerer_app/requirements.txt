@@ -1,0 +1,4 @@
+altair
+streamlit
+tensorflow
+transformers
