@@ -4,11 +4,16 @@
 Подробная информация по способу подключения и использованию моделей. Хранится в файлах README.md в каталогах с моделями.
 
 ## Участники и их модели
+---
 ### Фролов М.В.
+#### `PW1`
 #### Question answering model
-- [Файл модели](/PW1/question_answerer_model/question_answerer_model.py)
-- [Описание модели](/PW1/question_answerer_model/readme_question_answerer.md)
-
+- [Файл модели](PW1/question_answerer_model/question_answerer_model.py)
+- [Описание модели](PW1/question_answerer_model/README.md)
+#### `PW2`
+- [Приложение](PW2/question_answerer_app/question_answerer_app.py)
+- [Описание приложения](PW2/question_answerer_app/README.md)
+---
 ### Власов А. А.
 #### `PW1`
 
@@ -21,7 +26,7 @@
 #### Генерация краткого содержания введенного текста
 - [Приложение](/PW2/summary_text_app/summary_text_app.py)
 - [Описание приложения](/PW2/summary_text_app/README.md)
-
+---
 ### Дубовик А. А. 
 #### `PW1`
 
@@ -34,7 +39,7 @@
 #### Генерация описания по изображению (image to text model)
 - [Приложение](/PW2/image_to_text_app/image_to_text_app.py)
 - [Описание приложения](/PW2/image_to_text_app/README.md)
-
+---
 ### Тимофеев Е. Н.
 #### Dialog bot
 - [Файл модели](/PW1/dialog_chat/ml_homework_chat.py)
