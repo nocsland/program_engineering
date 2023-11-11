@@ -6,7 +6,7 @@
 Эту модель можно использовать для ответов на экстрактивные вопросы,\
 т.е. учитывая вопрос и некоторый контекст, ответом будет является фрагмент из контекста.
 
-[Открыть пример работы в Google Colab](https://colab.research.google.com/github/nocsland/program_engineering/blob/master/PW1/question_answerer_model.ipynb)
+[Открыть пример работы в Google Colab](https://colab.research.google.com/github/nocsland/program_engineering/blob/master/PW1/question_answerer_model/question_answerer_model.ipynb)
 
 Пример работы модели:
 
