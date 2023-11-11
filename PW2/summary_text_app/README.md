@@ -9,31 +9,31 @@
 
 Используемая модель: https://huggingface.co/csebuetnlp/mT5_multilingual_XLSum
 
-Модель предварительно обученная на наборе данных XL-Sum и настроена на работу с 45 языками.
+Модель предварительно обучена на наборе данных XL-Sum и настроена на работу с 45 языками.
 
 ### Запуск приложения:
 
 1) Создать виртуальное окружение:
 
 ```
-    python3 -m venv env
+    python3 -m venv venv
 ```
 
 2) Активировать виртуальное окружение:
 
 ```
-    source env/bin/activate
+    source venv/bin/activate
 ```
 
 3) Запуск приложения:
 
-- 3.1 Для применения стилей перейти в `program_engineering/PW2/summary_text_app`
+- 3.1 Перейти в `program_engineering/PW2/summary_text_app`
 
 ```
     cd program_engineering/PW2/summary_text_app
 ```
 
-- 3.2 Запустить:
+- 3.2 Запустить приложение:
 
 ```
     streamlit run summary_text_app.py
@@ -53,8 +53,7 @@
 ### Необходимые зависимости:
 
 ```
-    transformers
-    sentencepiece
+    transformers sentencepiece
     streamlit 
     torch
 ```
