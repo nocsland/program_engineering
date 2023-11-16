@@ -39,6 +39,14 @@
 #### Генерация описания по изображению (image to text model)
 - [Приложение](/PW2/image_to_text_app/image_to_text_app.py)
 - [Описание приложения](/PW2/image_to_text_app/README.md)
+
+#### `PW3`
+
+#### API генерации описания по изображению (image to text model), используя FastAPI
+- [Общий main.py файл](/PW3/main.py)
+- [Описание API](/PW3/image_to_text/README.md)
+
+
 ---
 ### Тимофеев Е. Н.
 #### Dialog bot
