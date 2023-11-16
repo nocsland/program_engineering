@@ -43,9 +43,9 @@
 #### `PW3`
 
 #### API генерации описания по изображению (image to text model), используя FastAPI
-- [Общий main.py файл](/PW3/main.py)
+- [Ссылка на приложение](/PW3/image_to_text/)
 - [Описание API](/PW3/image_to_text/README.md)
-
+- [Общий main.py файл (тут подгружаем роуты)](/PW3/main.py)
 
 ---
 ### Тимофеев Е. Н.
