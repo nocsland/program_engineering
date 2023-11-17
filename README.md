@@ -1,7 +1,7 @@
 # Программная инженерия. Группа 1.9
 Данный проект создан в рамках изучения предмета "Программная инженерия в магистратуре УрФУ"
 
-Подробная информация по способу подключения и использованию моделей. Хранится в файлах README.md в каталогах с моделями.
+Подробная информация по способу подключения и использованию моделей хранится в файлах README.md в каталогах с моделями.
 
 ## Участники и их модели
 ---
@@ -11,8 +11,14 @@
 - [Файл модели](PW1/question_answerer_model/question_answerer_model.py)
 - [Описание модели](PW1/question_answerer_model/README.md)
 #### `PW2`
+#### Question answering application (web)
 - [Приложение](PW2/question_answerer_app/question_answerer_app.py)
 - [Описание приложения](PW2/question_answerer_app/README.md)
+#### `PW3`
+#### Question answering application (API)
+- [Ссылка на приложение](/PW3/question_answerer/)
+- [Описание API](/PW3/question_answerer/README.md)
+- [Общий main.py файл](/PW3/main.py)
 ---
 ### Власов А. А.
 #### `PW1`
