@@ -22,16 +22,20 @@
 ---
 ### Власов А. А.
 #### `PW1`
-
 #### Summary text model
 - [Файл модели](/PW1/summary_text_model/summary_text.py)
 - [Описание модели](/PW1/summary_text_model/readme_summary_text.md)
 
 #### `PW2`
-
 #### Генерация краткого содержания введенного текста
 - [Приложение](/PW2/summary_text_app/summary_text_app.py)
 - [Описание приложения](/PW2/summary_text_app/README.md)
+
+#### `PW3`
+#### Генерация краткого содержания (API)
+- [Ссылка на приложение](/PW3/summary_text/)
+- [Описание приложения](/PW3/summary_text/README.md)
+- [Общий main.py файл](/PW3/main.py)
 ---
 ### Дубовик А. А. 
 #### `PW1`
