@@ -1,0 +1,5 @@
+uvicorn
+fastapi
+pydantic
+uvicorn
+transformers[torch, sentencepiece]
