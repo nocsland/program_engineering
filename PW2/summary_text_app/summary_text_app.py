@@ -4,11 +4,11 @@ from transformers import pipeline
 
 model_name = "csebuetnlp/mT5_multilingual_XLSum"
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False, legacy=False)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 
 # Декоратор @st.cache говорит Streamlit, что модель нужно загрузить только один раз, чтобы избежать утечек памяти
-@st.cache_resource
+# @st.cache_resource
 # загружает модель
 def load_model():
     return pipeline("summarization", model=model, tokenizer=tokenizer)
@@ -26,10 +26,7 @@ text = st.text_input("Введите текст для анализа")
 # Создаем кнопку
 button = st.button('Генерировать')
 
-# Формируем результат
-result = summary_text(text)[0]['summary_text']
-
 # Выводим результат по нажатию кнопки
 if button:
     st.subheader("Краткое содержание:")
-    st.write(result)
+    st.write(summary_text(text)[0]['summary_text'])
