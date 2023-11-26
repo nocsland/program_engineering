@@ -4,11 +4,11 @@ from transformers import pipeline
 
 model_name = "csebuetnlp/mT5_multilingual_XLSum"
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name, legasy=False)
 
 
 # Декоратор @st.cache говорит Streamlit, что модель нужно загрузить только один раз, чтобы избежать утечек памяти
-# @st.cache_resource
+@st.cache_resource
 # загружает модель
 def load_model():
     return pipeline("summarization", model=model, tokenizer=tokenizer)
