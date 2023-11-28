@@ -42,5 +42,5 @@ if button:
     try:
         st.subheader("Краткое содержание:")
         st.write(summary_text(text)[0]['summary_text'])
-    except NameError: st.write("File is empty")
-
+    except NameError:
+        st.write("Файл пустой или не загружен")
