@@ -10,7 +10,7 @@
 #### Question answering model
 - [Файл модели](PW1/question_answerer_model/question_answerer_model.py)
 - [Описание модели](PW1/question_answerer_model/README.md)
-#### `PW2`/`PW4`
+#### `PW2`
 #### Question answering application (web)
 - [Приложение](PW2/question_answerer_app/question_answerer_app.py)
 - [Описание приложения](PW2/question_answerer_app/README.md)
