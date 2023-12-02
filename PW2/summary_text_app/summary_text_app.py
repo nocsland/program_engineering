@@ -7,7 +7,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name, legasy=False)
 
 
-# Декоратор @st.cache говорит Streamlit, что модель нужно загрузить только один раз, чтобы избежать утечек памяти
+# @st.cache модель нужно загрузить только один раз
 @st.cache_resource
 # загружает модель
 def load_model():
@@ -19,21 +19,21 @@ summary_text = load_model()
 
 # Выводим заголовок страницы
 st.title("Генерация краткого содержания")
+st.write("Вы можете использовать текст на любом из 43 языков")
 
 # Выбираем источник данных
 source_button = st.radio(
-    "Выберете источник данных",
+    "\nВыберете источник данных",
     ["Ввод текста", "Загрузка файла"],
-    captions=["Вставить текст из буфера, или ввести с клавиатуры", "Загрузить текст из файла формата .txt"])
+    captions=["Вставить текст из буфера или ввести с клавиатуры", "Загрузить текст из файла формата TXT"])
 if source_button == "Ввод текста":
     # Источник буфер или клавиатура
     text = st.text_area("Введите текст для анализа")
 elif source_button == "Загрузка файла":
-    # Источник файл .txt
-    uploaded_files = st.file_uploader("Выберете .txt файлы", accept_multiple_files=True)
-    for uploaded_file in uploaded_files:
-        bytes_data = uploaded_file.read()
-        text = bytes_data.decode()
+    # Источник файл TXT
+    uploaded_file = st.file_uploader("Выберете файл", type='txt', accept_multiple_files=False)
+    if uploaded_file is not None:
+        text = uploaded_file.read().decode()
 # Создаем кнопку
 button = st.button('Генерировать')
 
@@ -41,6 +41,6 @@ button = st.button('Генерировать')
 if button:
     try:
         st.subheader("Краткое содержание:")
-        st.write(summary_text(text)[0]['summary_text'])
+        st.write(summary_text(text, max_length=200, min_length=50)[0]['summary_text'])
     except NameError:
-        st.write("Файл пустой или не загружен")
+        st.write("Файл не загружен")

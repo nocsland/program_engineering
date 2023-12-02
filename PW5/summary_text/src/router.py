@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from summary_text.model import load_model
+from PW5.summary_text.src.model import load_model
 
 router = APIRouter(
     prefix="/summary_text",
@@ -12,14 +12,12 @@ router = APIRouter(
 class Item(BaseModel):
     text: str
 
-
 @router.get("/")
 async def base_page():
     """
     Возвращает приветственное сообщение
     """
     return {"message": "Welcome to Base Page"}
-
 
 @router.post("/")
 async def summary_text(
@@ -34,7 +32,7 @@ async def summary_text(
         result = model(item.text)
 
         return {
-            "Краткое содержание: ": result[0]['summary_text'],
+            "Краткое содержание:": result[0]['summary_text'],
 
         }
 
