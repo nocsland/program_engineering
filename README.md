@@ -36,6 +36,14 @@
 - [Ссылка на приложение](/PW3/summary_text/)
 - [Описание приложения](/PW3/summary_text/README.md)
 - [Общий main.py файл](/PW3/main.py)
+
+#### `PW5`
+#### Приложение и тесты API
+- [Ссылка на приложение](/PW5/summary_text/src)
+- [Ссылка на тесты](/PW5/summary_text/tests)
+- [Общий main.py файл](/PW5/main.py)
+- [Ссылка на файл настройки workflow GitHub Actions](.github/workflows/python-app.yml)
+- 
 ---
 ### Дубовик А. А. 
 #### `PW1`
