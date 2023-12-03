@@ -8,3 +8,7 @@
 4. POST. test_post_empty_string. Отправка пустой строки. Проверяет статус-код и возврат сообщения по умолчанию для
    пустой строки.
 5. POST. test_error_empty_json. Отправка пустого JSON. Проверяет статус-код и возврат ошибки.
+
+### Текущий статус
+
+[![Python application](https://github.com/nocsland/program_engineering/actions/workflows/python-app.yml/badge.svg)](https://github.com/nocsland/program_engineering/actions/workflows/python-app.yml)
