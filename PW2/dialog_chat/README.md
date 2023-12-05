@@ -37,6 +37,9 @@
 ---
 ### Скриншоты рабочего приложения:
 ![скриншот работы приложения](github.com/nocsland/program_engineering/blob/master/PW2/dialog_chat/img/skrin.png)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 47ef0a02f0babb1f60821d0c2d747696462dbbf6
 
 
