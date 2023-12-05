@@ -39,3 +39,4 @@
 ![скриншот работы приложения](github.com/nocsland/program_engineering/blob/master/PW2/dialog_chat/img/skrin.png)
 
 
+
