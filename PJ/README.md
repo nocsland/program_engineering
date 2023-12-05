@@ -37,16 +37,16 @@
 
 3. Запустить приложение:
 
-    3.1 Перейти в `program_engineering/PJ/summary_text/summary_text_app`
+    3.1 Перейти в `program_engineering/PJ/summary_text`
 
     ```
-        cd program_engineering/PJ/summary_text/summary_text_app
+        cd program_engineering/PJ/summary_text
     ```
 
     3.2 Запустить непосредственно приложение:
 
     ```
-        streamlit run summary_text_app.py
+        streamlit run summary_text.py
     ```
 
 4. Дальнейшая работа с приложением локально аналогична работе онлайн.
