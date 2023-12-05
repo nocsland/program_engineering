@@ -100,7 +100,17 @@
 
 ### Тимофеев Е. Н.
 
+#### `PW1`
+
 #### Dialog bot
 
 - [Файл модели](/PW1/dialog_chat/ml_homework_chat.py)
 - [Описание модели](/PW1/dialog_chat/README.md)
+
+#### `PW2`
+
+#### Бот для ведения автоматических диалогов
+
+- [Файл модели](/PW2/dialog_chat/dialog_app.py)
+- [Описание модели](/PW2/dialog_chat/README.md)
+
