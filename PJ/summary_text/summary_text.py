@@ -2,14 +2,15 @@ import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import pipeline
 
-model_name = "csebuetnlp/mT5_multilingual_XLSum"
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained(model_name, legasy=False)
-
-
 @st.cache_resource
 def load_model():
-    # загружаем\получаем из кэша модель
+    
+    # создание кэшированных объектов модели и токенайзера
+    model_name = "csebuetnlp/mT5_multilingual_XLSum"
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, legasy=False)
+    
+    # загружаем\получаем из кэша объект pipeline с моделью
     return pipeline("summarization", model=model, tokenizer=tokenizer)
 
 
