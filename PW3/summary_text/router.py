@@ -18,7 +18,7 @@ async def base_page():
     """
     Возвращает приветственное сообщение
     """
-    return {"message": "Welcome to Base Page"}
+    return {"message": "Welcome to summary text application"}
 
 
 @router.post("/")
