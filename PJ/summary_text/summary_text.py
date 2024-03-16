@@ -1,9 +1,20 @@
+from base64 import b64encode
+
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import pipeline
 
 
-def set_background(file):
+@st.cache_data
+def get_base64(file: str) -> str:
+    # загрузка файла в base64 для streamlit
+    with open(file, 'rb') as f:
+        data = f.read()
+    return b64encode(data).decode()
+
+
+def set_background(file: str) -> None:
+    # установка стилей фона для streamlit
     bin_str = get_base64(file)
     page_bg_img = '''
     <style>
