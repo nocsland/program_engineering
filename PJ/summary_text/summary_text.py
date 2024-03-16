@@ -1,4 +1,5 @@
 import streamlit as st
+from chardet import detect
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import pipeline
 
@@ -36,7 +37,7 @@ def main():
         text = st.text_area("Введите текст")
 
     elif source_button == "Загрузка файла":
-        # форма для загрузки изображения
+        # форма для загрузки файла
         uploaded_file = st.file_uploader(
             "Выберите файл",
             type="txt",
@@ -45,7 +46,15 @@ def main():
 
         if uploaded_file is not None:
             # чтение текста из файла
-            text = uploaded_file.read().decode()
+            txt_bytes = uploaded_file.read()
+            # определение кодировки
+            encoding = detect_encoding(data=txt_bytes)
+            # декодирование и вывод превью
+            text = txt_bytes.decode(encoding=encoding, errors="ignore")
+            text = st.text_area(
+                label="Проверьте и при необходимости отредактируйте текст:",
+                value=text,
+            )
         else:
             text = ""
 
@@ -65,6 +74,10 @@ def main():
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
+
+def detect_encoding(data: bytes) -> str:
+    """Return encoding"""
+    return detect(data)["encoding"]
 
 
 if __name__ == "__main__":
