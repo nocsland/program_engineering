@@ -53,7 +53,7 @@ def main():
 
     if button:
         try:
-            with st.spinner('Пожалуйста подождите...'):
+            with st.spinner('Пожалуйста, подождите...'):
                 # выводим результат
                 st.markdown("**Результат:**")
                 st.write(summary_text(
