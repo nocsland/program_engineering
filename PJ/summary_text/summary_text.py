@@ -47,7 +47,7 @@ def main():
     summary_text = load_model()
     
     # загрузка фона
-    set_background('../static/image.png')
+    set_background("../static/image.png")
 
     st.title("Создание краткого резюме")
     st.write("Вы можете использовать текст на любом из 45 языков")
