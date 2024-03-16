@@ -33,7 +33,6 @@ def set_background(file: str) -> None:
 
 @st.cache_resource
 def load_model():
-
     # создание кэшированных объектов модели и токенайзера
     model_name = "csebuetnlp/mT5_multilingual_XLSum"
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
@@ -46,7 +45,7 @@ def load_model():
 def main():
     # загружаем предварительно обученную модель
     summary_text = load_model()
-    
+
     # загрузка фона
     set_background("static/image.png")
 
@@ -87,9 +86,7 @@ def main():
             )
         else:
             text = ""
-
     button = st.button("Создать")
-
     if button:
         try:
             with st.spinner('Пожалуйста, подождите...'):
@@ -104,6 +101,7 @@ def main():
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
+
 
 def detect_encoding(data: bytes) -> str:
     """Return encoding"""
