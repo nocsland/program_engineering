@@ -53,13 +53,14 @@ def main():
 
     if button:
         try:
-            # выводим результат
-            st.markdown("**Результат:**")
-            st.write(summary_text(
-                text,
-                max_length=200,
-                min_length=50,
-            )[0]["summary_text"])
+            with st.spinner('Ждите...'):
+                # выводим результат
+                st.markdown("**Результат:**")
+                st.write(summary_text(
+                    text,
+                    max_length=200,
+                    min_length=50,
+                )[0]["summary_text"])
 
         except Exception as e:
             # выводим возникающие ошибки
