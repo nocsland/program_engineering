@@ -48,7 +48,7 @@ def main():
             # чтение текста из файла
             txt_bytes = uploaded_file.read()
             # определение кодировки
-            encoding = detect(txt_bytes)['encoding']
+            encoding = detect_encoding(data=txt_bytes)
             # декодирование и вывод превью
             text = txt_bytes.decode(encoding=encoding, errors='ignore')
             text = st.text_area(
@@ -72,6 +72,10 @@ def main():
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
+
+def detect_encoding(data: bytes) -> str:
+    """Return encoding"""
+    return detect(data)['encoding']
 
 
 if __name__ == "__main__":
