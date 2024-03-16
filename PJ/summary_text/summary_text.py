@@ -1,7 +1,34 @@
+from base64 import b64encode
+
 import streamlit as st
 from chardet import detect
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import pipeline
+
+
+@st.cache_data
+def get_base64(file: str) -> str:
+    # загрузка файла в base64 для streamlit
+    with open(file, "rb") as f:
+        data = f.read()
+    return b64encode(data).decode()
+
+
+def set_background(file: str) -> None:
+    # установка стилей фона для streamlit
+    bin_str = get_base64(file)
+    page_bg_img = '''
+    <style>
+    [class="appview-container st-emotion-cache-1wrcr25 ea3mdgi4"] {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+    }
+    </style>
+    ''' % bin_str
+
+    st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 @st.cache_resource
@@ -19,6 +46,9 @@ def load_model():
 def main():
     # загружаем предварительно обученную модель
     summary_text = load_model()
+    
+    # загрузка фона
+    set_background("static/image.png")
 
     st.title("Создание краткого резюме")
     st.write("Вы можете использовать текст на любом из 45 языков")
