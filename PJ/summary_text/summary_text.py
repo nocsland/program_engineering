@@ -50,10 +50,11 @@ def main():
             # определение кодировки
             encoding = detect_encoding(data=txt_bytes)
             # декодирование и вывод превью
-            text = txt_bytes.decode(encoding=encoding, errors='ignore')
+            text = txt_bytes.decode(encoding=encoding, errors="ignore")
             text = st.text_area(
                 label="Проверьте и при необходимости отредактируйте текст:",
-                value=text)
+                value=text,
+            )
         else:
             text = ""
 
@@ -75,7 +76,7 @@ def main():
 
 def detect_encoding(data: bytes) -> str:
     """Return encoding"""
-    return detect(data)['encoding']
+    return detect(data)["encoding"]
 
 
 if __name__ == "__main__":
