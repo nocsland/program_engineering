@@ -33,7 +33,6 @@ def set_background(file: str) -> None:
 
 @st.cache_resource
 def load_model():
-
     # создание кэшированных объектов модели и токенайзера
     model_name = "csebuetnlp/mT5_multilingual_XLSum"
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
@@ -46,23 +45,22 @@ def load_model():
 def main():
     # загружаем предварительно обученную модель
     summary_text = load_model()
-    
-    # загрузка фона
-    set_background("static/image.png")
 
-    st.title("Создание краткого резюме")
-    st.write("Вы можете использовать текст на любом из 45 языков")
+    # загрузка фона
+    set_background('../static/image.png')
+
+    # вывод заголовка
+    st.title("Помощник студента")
+    st.write("Приложение возвращает краткое содержание текста, поддерживает данные на нескольких языках.")
 
     # выбор источника данных
     source_button = st.radio(
-        "\nВыберите источник данных",
+        "Выберите источник данных",
         ["Ввод текста", "Загрузка файла"],
-        captions=[
-            "Вставить текст из буфера или ввести с клавиатуры",
-            "Загрузить текст из файла формата TXT",
-        ],
+        captions=["Вставить текст из буфера или ввести с клавиатуры", "Загрузить текст из файла формата TXT"],
     )
 
+    # форма ввода текста
     if source_button == "Ввод текста":
         text = st.text_area("Введите текст")
 
@@ -87,9 +85,7 @@ def main():
             )
         else:
             text = ""
-
     button = st.button("Создать")
-
     if button:
         try:
             with st.spinner('Пожалуйста, подождите...'):
@@ -104,6 +100,7 @@ def main():
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
+
 
 def detect_encoding(data: bytes) -> str:
     """Return encoding"""
