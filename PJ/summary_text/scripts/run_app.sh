@@ -14,13 +14,15 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
    echo "Виртуальное окружение не активировано"
 
    # Создание виртуального окружения
-   python3 -m venv ~/.virtualenvs/project_practice/
+   sudo apt install -y python3-venv
+   mkdir -p ~/.virtualenvs/summary_text/
+   python3 -m venv ~/.virtualenvs/summary_text/
 
    # Активация виртуального окружения
-   source "$HOME"/.virtualenvs/project_practice/bin/activate
+   source "$HOME"/.virtualenvs/summary_text/bin/activate
 
    echo "Проверяю и устанавливаю зависимости"
-   pip install -r ../src/requirements.txt
+   pip install -r ../../requirements.txt
 else
    echo "Виртуальное окружение активировано"
 fi
