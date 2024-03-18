@@ -47,7 +47,7 @@ def main():
     summary_text = load_model()
 
     # загрузка фона
-    set_background('../static/image.png')
+    set_background("../static/image.png")
 
     # вывод заголовка
     st.title("Помощник студента")
@@ -88,7 +88,7 @@ def main():
     button = st.button("Создать")
     if button:
         try:
-            with st.spinner('Пожалуйста, подождите...'):
+            with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
                 st.markdown("**Результат:**")
                 st.write(summary_text(
