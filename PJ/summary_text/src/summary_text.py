@@ -45,6 +45,8 @@ def load_model():
 def main():
     # загружаем предварительно обученную модель
     summary_text = load_model()
+    # задаем переменную с текстом по умолчанию пустой
+    text = ""
 
     # загрузка фона
     set_background("../static/image.png")
