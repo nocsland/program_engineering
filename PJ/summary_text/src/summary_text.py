@@ -85,18 +85,29 @@ def main():
             )
         else:
             text = ""
+
+    length = len(text.split())
+
+    # слайдер "Степень краткости резюме"
+    brevity_level = st.slider(
+        "Степень краткости резюме (10 - кратко, 100 - подробно)",
+        min_value=10,
+        max_value=100,
+        value=10
+    )
+
+    # кнопка "Создать"
     button = st.button("Создать")
-    if button:
+    if button and text:
         try:
             with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
-                st.markdown("**Результат:**")
-                st.write(summary_text(
-                    text,
-                    max_length=200,
-                    min_length=50,
-                )[0]["summary_text"])
-
+                st.markdown("**Результат:** " +
+                            summary_text(
+                                text,
+                                max_length=round(length * 1.5),
+                                min_length=round(length * (brevity_level / 100)))[0]["summary_text"]
+                            )
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
