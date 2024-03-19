@@ -90,9 +90,9 @@ def main():
 
     length = len(text.split())
 
-    # слайдер "Степень краткости резюме"
+    # слайдер "Cтепень сжатия результата"
     brevity_level = st.slider(
-        "Степень краткости резюме (10 - кратко, 100 - подробно)",
+        "Cтепень сжатия результата (10 - кратко, 100 - подробно)",
         min_value=10,
         max_value=100,
         value=50
@@ -104,12 +104,11 @@ def main():
         try:
             with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
-                st.markdown("**Результат:** " +
-                            summary_text(
-                                text,
-                                max_length=round(length * 1.5),
-                                min_length=round(length * (brevity_level / 100)))[0]["summary_text"]
-                            )
+                st.markdown("**Результат: ** %s" % summary_text(
+                    text,
+                    max_length=round(length * 1.5),
+                    min_length=round(length * (brevity_level / 100)))[0]["summary_text"],
+                )
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
