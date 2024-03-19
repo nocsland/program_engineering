@@ -45,6 +45,8 @@ def load_model():
 def main():
     # загружаем предварительно обученную модель
     summary_text = load_model()
+    # задаем переменную с текстом по умолчанию пустой
+    text = ""
 
     # загрузка фона
     set_background("../static/image.png")
@@ -85,18 +87,28 @@ def main():
             )
         else:
             text = ""
+
+    length = len(text.split())
+
+    # слайдер "Cтепень сжатия результата"
+    brevity_level = st.slider(
+        "Cтепень сжатия результата (10 - кратко, 100 - подробно)",
+        min_value=10,
+        max_value=100,
+        value=50
+    )
+
+    # кнопка "Создать"
     button = st.button("Создать")
-    if button:
+    if button and text:
         try:
             with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
-                st.markdown("**Результат:**")
-                st.write(summary_text(
+                st.markdown("**Результат: ** %s" % summary_text(
                     text,
-                    max_length=200,
-                    min_length=50,
-                )[0]["summary_text"])
-
+                    max_length=round(length * 1.5),
+                    min_length=round(length * (brevity_level / 100)))[0]["summary_text"],
+                )
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
