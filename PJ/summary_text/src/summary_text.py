@@ -2,8 +2,9 @@ from base64 import b64encode
 
 import streamlit as st
 from chardet import detect
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from transformers import pipeline
+import torch
+from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM,
+                          AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline)
 
 
 @st.cache_data
@@ -32,7 +33,7 @@ def set_background(file: str) -> None:
 
 
 @st.cache_resource
-def load_model():
+def load_summary_model():
     # создание кэшированных объектов модели и токенайзера
     model_name = "csebuetnlp/mT5_multilingual_XLSum"
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
@@ -42,9 +43,38 @@ def load_model():
     return pipeline("summarization", model=model, tokenizer=tokenizer)
 
 
+@st.cache_resource
+def load_whisper_model():
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
+    torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+    model_id = "openai/whisper-large-v3"
+    model = AutoModelForSpeechSeq2Seq.from_pretrained(
+        model_id,
+        torch_dtype=torch_dtype,
+        low_cpu_mem_usage=True,
+        use_safetensors=True
+    )
+    model.to(device)
+    processor = AutoProcessor.from_pretrained(model_id)
+    return pipeline(
+        "automatic-speech-recognition",
+        model=model,
+        tokenizer=processor.tokenizer,
+        feature_extractor=processor.feature_extractor,
+        max_new_tokens=128,
+        chunk_length_s=30,
+        batch_size=16,
+        return_timestamps=True,
+        torch_dtype=torch_dtype,
+        device=device,
+    )
+
+
 def main():
-    # загружаем предварительно обученную модель
-    summary_text = load_model()
+    # загружаем предварительно обученную модель summary
+    summary_text = load_summary_model()
+    # загружаем предварительно обученную модель wisper
+    whisper = load_whisper_model()
     # задаем переменную с текстом по умолчанию пустой
     text = ""
 
@@ -53,13 +83,18 @@ def main():
 
     # вывод заголовка
     st.title("Помощник студента")
-    st.write("Приложение возвращает краткое содержание текста, поддерживает данные на нескольких языках.")
+    st.write(
+        "Приложение возвращает краткое содержание текста, поддерживает данные "
+        "на нескольких языках.")
 
     # выбор источника данных
     source_button = st.radio(
         "Выберите источник данных",
         ["Ввод текста", "Загрузка файла"],
-        captions=["Вставить текст из буфера или ввести с клавиатуры", "Загрузить текст из файла формата TXT"],
+        captions=[
+            "Вставить текст из буфера или ввести с клавиатуры",
+            "Загрузить файл формата TXT или mp3"
+        ],
     )
 
     # форма ввода текста
@@ -70,21 +105,34 @@ def main():
         # форма для загрузки файла
         uploaded_file = st.file_uploader(
             "Выберите файл",
-            type="txt",
+            type=["txt", "mp3"],
             accept_multiple_files=False,
         )
 
         if uploaded_file is not None:
             # чтение текста из файла
-            txt_bytes = uploaded_file.read()
-            # определение кодировки
-            encoding = detect_encoding(data=txt_bytes)
-            # декодирование и вывод превью
-            text = txt_bytes.decode(encoding=encoding, errors="ignore")
-            text = st.text_area(
-                label="Проверьте и при необходимости отредактируйте текст:",
-                value=text,
-            )
+            file_bytes = uploaded_file.read()
+            if uploaded_file.type == "text/plain":
+                # определение кодировки
+                encoding = detect_encoding(data=file_bytes)
+                # декодирование и вывод превью
+                text = file_bytes.decode(encoding=encoding, errors="ignore")
+                text = st.text_area(
+                    label="Проверьте и при необходимости отредактируйте текст:",
+                    value=text,
+                )
+            else:
+                # выводим воспроизведение аудио
+                st.audio(file_bytes)
+                # выводим кнопку "Конвертировать"
+                trans_button = st.button("Конвертировать в текст")
+                if trans_button and file_bytes:
+                    text = whisper(file_bytes)["text"]
+                    text = st.text_area(
+                        label="Проверьте и при необходимости отредактируйте "
+                              "текст:",
+                        value=text,
+                    )
         else:
             text = ""
 
@@ -99,16 +147,17 @@ def main():
     )
 
     # кнопка "Создать"
-    button = st.button("Создать")
-    if button and text:
+    create_button = st.button("Создать")
+    if create_button and text:
         try:
             with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
                 st.markdown("**Результат: ** %s" % summary_text(
                     text,
                     max_length=round(length * 1.5),
-                    min_length=round(length * (brevity_level / 100)))[0]["summary_text"],
-                )
+                    min_length=round(length * (brevity_level / 100)))[0][
+                    "summary_text"],
+                            )
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
