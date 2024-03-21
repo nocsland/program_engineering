@@ -75,8 +75,9 @@ def main():
     summary_text = load_summary_model()
     # загружаем предварительно обученную модель wisper
     whisper = load_whisper_model()
-    # задаем переменную с текстом по умолчанию пустой
-    text = ""
+    # инициализируем переменные с текстом
+    if "text" not in st.session_state:
+        st.session_state["text"] = ""
 
     # загрузка фона
     set_background("../static/image.png")
@@ -93,13 +94,13 @@ def main():
         ["Ввод текста", "Загрузка файла"],
         captions=[
             "Вставить текст из буфера или ввести с клавиатуры",
-            "Загрузить файл формата TXT или mp3"
+            "Загрузить файл формата TXT или MP3"
         ],
     )
 
     # форма ввода текста
     if source_button == "Ввод текста":
-        text = st.text_area("Введите текст")
+        st.session_state["text"] = st.text_area("Введите текст")
 
     elif source_button == "Загрузка файла":
         # форма для загрузки файла
@@ -116,27 +117,21 @@ def main():
                 # определение кодировки
                 encoding = detect_encoding(data=file_bytes)
                 # декодирование и вывод превью
-                text = file_bytes.decode(encoding=encoding, errors="ignore")
-                text = st.text_area(
-                    label="Проверьте и при необходимости отредактируйте текст:",
-                    value=text,
-                )
+                st.session_state["text"] = file_bytes.decode(encoding=encoding,
+                                                             errors="ignore")
             else:
                 # выводим воспроизведение аудио
                 st.audio(file_bytes)
                 # выводим кнопку "Конвертировать"
                 trans_button = st.button("Конвертировать в текст")
                 if trans_button and file_bytes:
-                    text = whisper(file_bytes)["text"]
-                    text = st.text_area(
-                        label="Проверьте и при необходимости отредактируйте "
-                              "текст:",
-                        value=text,
-                    )
-        else:
-            text = ""
+                    st.session_state["text"] = whisper(file_bytes)["text"]
 
-    length = len(text.split())
+        if st.session_state["text"]:
+            st.session_state["text"] = st.text_area(
+                label="Проверьте и при необходимости отредактируйте текст:",
+                value=st.session_state["text"],
+            )
 
     # слайдер "Cтепень сжатия результата"
     brevity_level = st.slider(
@@ -148,12 +143,13 @@ def main():
 
     # кнопка "Создать"
     create_button = st.button("Создать")
-    if create_button and text:
+    if create_button and st.session_state["text"]:
         try:
             with st.spinner("Пожалуйста, подождите..."):
                 # выводим результат
+                length = len(st.session_state["text"].split())
                 st.markdown("**Результат: ** %s" % summary_text(
-                    text,
+                    st.session_state["text"],
                     max_length=round(length * 1.5),
                     min_length=round(length * (brevity_level / 100)))[0][
                     "summary_text"],
