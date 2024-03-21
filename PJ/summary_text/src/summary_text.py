@@ -3,8 +3,13 @@ from base64 import b64encode
 import streamlit as st
 from chardet import detect
 import torch
-from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM,
-                          AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline)
+from transformers import (
+    AutoTokenizer,
+    AutoModelForSeq2SeqLM,
+    AutoModelForSpeechSeq2Seq,
+    AutoProcessor,
+    pipeline,
+)
 
 
 @st.cache_data
@@ -43,6 +48,7 @@ def load_summary_model():
     return pipeline("summarization", model=model, tokenizer=tokenizer)
 
 
+# Загрузка модели whisper-large-v3
 @st.cache_resource
 def load_whisper_model():
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -52,7 +58,7 @@ def load_whisper_model():
         model_id,
         torch_dtype=torch_dtype,
         low_cpu_mem_usage=True,
-        use_safetensors=True
+        use_safetensors=True,
     )
     model.to(device)
     processor = AutoProcessor.from_pretrained(model_id)
@@ -86,7 +92,8 @@ def main():
     st.title("Помощник студента")
     st.write(
         "Приложение возвращает краткое содержание текста, поддерживает данные "
-        "на нескольких языках.")
+        "на нескольких языках."
+    )
 
     # выбор источника данных
     source_button = st.radio(
@@ -94,7 +101,7 @@ def main():
         ["Ввод текста", "Загрузка файла"],
         captions=[
             "Вставить текст из буфера или ввести с клавиатуры",
-            "Загрузить файл формата TXT или MP3"
+            "Загрузить файл формата TXT или MP3",
         ],
     )
 
@@ -117,8 +124,10 @@ def main():
                 # определение кодировки
                 encoding = detect_encoding(data=file_bytes)
                 # декодирование и вывод превью
-                st.session_state["text"] = file_bytes.decode(encoding=encoding,
-                                                             errors="ignore")
+                st.session_state["text"] = file_bytes.decode(
+                    encoding=encoding,
+                    errors="ignore",
+                )
             else:
                 # выводим воспроизведение аудио
                 st.audio(file_bytes)
@@ -151,9 +160,8 @@ def main():
                 st.markdown("**Результат: ** %s" % summary_text(
                     st.session_state["text"],
                     max_length=round(length * 1.5),
-                    min_length=round(length * (brevity_level / 100)))[0][
-                    "summary_text"],
-                            )
+                    min_length=round(length * (brevity_level / 100))
+                )[0]["summary_text"])
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")

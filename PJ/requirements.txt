@@ -5,4 +5,3 @@ chardet
 accelerate
 librosa
 soundfile
-streamlit-audiorecorder
