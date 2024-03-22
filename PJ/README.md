@@ -86,11 +86,15 @@
     transformers[torch, sentencepiece]
     flake8
     chardet
+    accelerate
+    librosa
+    soundfile
 ```
 
 ## Внешние зависимости:
-Для обработки аудио требуется внешняя программа ffmpeg 
-Локально установить через apt-get в linux, для windows скачать по адресу: https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z 
+Для обработки аудио требуется внешняя программа `ffmpeg`.\
+Локально установить через команду `apt-get` в linux, для windows скачать по адресу: https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z и установить. \
+Для установки через pipeline streamlit зависимость внесена в файл `packages.txt`. 
 
 ## Форма ответа:
 
