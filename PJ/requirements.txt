@@ -1,3 +1,7 @@
-streamlit
+streamlit==1.29.0
 transformers[torch, sentencepiece]
 flake8
+chardet
+accelerate
+librosa
+soundfile
