@@ -88,6 +88,10 @@
     chardet
 ```
 
+## Внешние зависимости:
+Для обработки аудио требуется внешняя программа ffmpeg 
+Локально установить через apt-get в linux, для windows скачать по адресу: https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z 
+
 ## Форма ответа:
 
 ```
