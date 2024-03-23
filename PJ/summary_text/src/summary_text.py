@@ -77,7 +77,7 @@ def load_whisper_model():
 
 
 def detect_encoding(data: bytes) -> str:
-    # определения кодировки символов
+    # определение кодировки символов
     return detect(data)["encoding"]
 
 
