@@ -48,9 +48,9 @@ def load_summary_model():
     return pipeline("summarization", model=model, tokenizer=tokenizer)
 
 
-# Загрузка модели whisper-large-v3
 @st.cache_resource
 def load_whisper_model():
+    # Загрузка модели whisper-large-v3
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
     model_id = "openai/whisper-large-v3"
@@ -74,6 +74,11 @@ def load_whisper_model():
         torch_dtype=torch_dtype,
         device=device,
     )
+
+
+def detect_encoding(data: bytes) -> str:
+    # определение кодировки символов
+    return detect(data)["encoding"]
 
 
 def main():
@@ -165,11 +170,6 @@ def main():
         except Exception as e:
             # выводим возникающие ошибки
             st.write(f"Ошибка: {e}")
-
-
-def detect_encoding(data: bytes) -> str:
-    """Return encoding"""
-    return detect(data)["encoding"]
 
 
 if __name__ == "__main__":
